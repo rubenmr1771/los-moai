@@ -1,9 +1,4 @@
-//Fichero de variables globales
-
-instance_type = "A-Series"
-tag = "Instancia para máquina azure"
-location = "eu-west"
-
+//Fichero de variables globale
 variable "subscripcion" {
   default = "Moai" //ID de subscripción de Azure
   description = "ID de la suscripción"
