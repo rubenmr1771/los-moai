@@ -1,5 +1,5 @@
 variable "region" {
-  default     = "eu" //Servidor de Azure
+  default     = "eu-west" //Servidor de Azure
   description = "Dirección del servidor Azure donde etá ubicada la máquina"
 }
 
@@ -11,4 +11,8 @@ variable "idmaquina" {
 variable "tipomaquina" {
     default = "Tipo" //Tipo de máquina
     description = "Tipo de máquina"
+}
+
+variable "usuario" {
+  
 }
