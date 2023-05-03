@@ -1,3 +1,7 @@
+module "imports" {
+  source = "../virtualmachine"
+}
+
 resource "azurerm_resource_group" "moai" {
   location = var.region //Conectamos al servidor de azure mediante la variable region especificada en el fichero variables
   name     = "Los Moai"
@@ -5,7 +9,7 @@ resource "azurerm_resource_group" "moai" {
 
 #Red virtual
 resource "azurerm_virtual_network" "moainetwork" {
-  name                = "${random_pet.prefix.id}--vnet"
+  name                = "${module.imports.name}--vnet"
   address_space       = var.direccionip
   location            = azurerm_resource_group.moai.location
   resource_group_name = azurerm_resource_group.moai.name //Se especifica en estas dos lineas donde encontrar la información de la location y el name-
@@ -13,7 +17,7 @@ resource "azurerm_virtual_network" "moainetwork" {
 
 #Subnet
 resource "azurerm_subnet" "moaisubnet" {
-  name                 = "${random_pet.prefix.id}--subnet"
+  name                 = "${module.imports.name}--subnet"
   resource_group_name  = azurerm_resource_group.moai.name
   virtual_network_name = azurerm_virtual_network.moainetwork
   address_prefixes     = var.subnet
@@ -21,7 +25,7 @@ resource "azurerm_subnet" "moaisubnet" {
 
 #Creamos IP pública
 resource "azurerm_public_ip" "moaiip" {
-  name                = "${random_pet.prefix.id}--public-ip"
+  name                = "${module.imports.name}--public-ip"
   location            = azurerm_resource_group.moai.location
   resource_group_name = azurerm_resource_group.moai.name
   allocation_method   = "Dynamic"
@@ -29,7 +33,7 @@ resource "azurerm_public_ip" "moaiip" {
 
 #Reglas de seguridad
 resource "azurerm_network_security_group" "moainsg" {
-  name                = "${random_pet.prefix.id}--nsg"
+  name                = "${module.imports.name}--nsg"
   location            = azurerm_resource_group.moai.location
   resource_group_name = azurerm_resource_group.moai.name
 
@@ -59,7 +63,7 @@ resource "azurerm_network_security_group" "moainsg" {
 
 #Interfaz de Red
 resource "azurerm_network_interface" "maoinic" {
-  name                = "${random_pet.prefix.id}--nic"
+  name                = "${module.imports.name}--nic"
   location            = azurerm_resource_group.moai.location
   resource_group_name = azurerm_resource_group.moai.name
 
@@ -79,7 +83,7 @@ resource "azurerm_network_interface_security_group_association" "moaiconsecnic" 
 
 #Cuenta de almacenamiento para diagnósticos de boot
 resource "azurerm_storage_account" "moaistorage" {
-    name = "diag${random_id.random_id.hex}"
+    name = "diag${module.imports.name}"
     location = azurerm_resource_group.moai.location
     resource_group_name = azurerm_resource_group.moai.name
     account_tier = "Standard"
