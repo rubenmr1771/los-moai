@@ -1,3 +1,9 @@
+module "providers" {
+  source = "../providers"
+  providers = {
+    azure = azurerm.eu
+  }
+}
 module "imports" {
   source = "../network"
 }

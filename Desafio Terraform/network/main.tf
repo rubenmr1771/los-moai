@@ -1,4 +1,4 @@
-module "azure" {
+module "providers" {
   source = "../providers"
   providers = {
     azure = azurerm.eu
