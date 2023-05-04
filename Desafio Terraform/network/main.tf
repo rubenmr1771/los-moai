@@ -89,9 +89,9 @@ resource "azurerm_network_interface_security_group_association" "moaiconsecnic" 
 
 #Cuenta de almacenamiento para diagnósticos de boot
 resource "azurerm_storage_account" "moaistorage" {
-    name = "diag${module.imports.name}"
-    location = azurerm_resource_group.moai.location
-    resource_group_name = azurerm_resource_group.moai.name
-    account_tier = "Standard"
-    account_replication_type = "LRS"
+  name                     = "diag${module.imports.name}"
+  location                 = azurerm_resource_group.moai.location
+  resource_group_name      = azurerm_resource_group.moai.name
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
 }
