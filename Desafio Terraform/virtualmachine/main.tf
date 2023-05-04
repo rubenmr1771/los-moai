@@ -1,5 +1,5 @@
 module "providers" {
-  source = "../providers"
+  source = "../"
   providers = {
     azure = azurerm.eu
   }
@@ -39,20 +39,4 @@ source_image_reference {
 boot_diagnostics {
   storage_account_uri = module.imports.storage
     }
-}
-
-
-#Generación de texto y contraseña para los nombres de cuenta
-resource "random_pet" "randomid" {
-  prefix = var.prefix
-  length = 1
-}
-
-resource "random_password" "randompass" {
-    length = 20
-    min_lower = 1
-    min_upper = 1
-    min_numeric = 3
-    min_special = 3
-    special = true  
 }

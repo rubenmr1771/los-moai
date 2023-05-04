@@ -1,15 +1,8 @@
-module "providers" {
+module "global" {
   source = "../"
   providers = {
     azure = azurerm.eu
   }
-}
-
-module "imports" {
-    source = "../virtualmachine"
-}
-module "network-import" {
-  source = "../network"
 }
 module "ipimport" {
     source = "../ip"
@@ -17,9 +10,9 @@ module "ipimport" {
 
 #Interfaz de Red
 resource "azurerm_network_interface" "maoinic" {
-  name                = "${module.imports.name}--nic"
-  location            = azurerm_resource_group.moai.location
-  resource_group_name = azurerm_resource_group.moai.name
+  name                = "${modules.global.name}--nic"
+  location            = modules.global.globallocation
+  resource_group_name = modules.global.globalname
 
   ip_configuration {
     name                 = "moai_nic_config"

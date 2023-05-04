@@ -8,11 +8,6 @@ module "imports" {
   source = "../virtualmachine"
 }
 
-resource "azurerm_resource_group" "moai" {
-  location = var.region //Conectamos al servidor de azure mediante la variable region especificada en el fichero variables
-  name     = "Los Moai"
-}
-
 #Red virtual
 resource "azurerm_virtual_network" "moainetwork" {
   name                = "${module.imports.name}--vnet"
@@ -57,20 +52,6 @@ resource "azurerm_network_security_group" "moainsg" {
     destination_port_range     = "80"
     source_address_prefix      = "*"
     destination_address_prefix = "*"
-  }
-}
-
-#Interfaz de Red
-resource "azurerm_network_interface" "maoinic" {
-  name                = "${module.imports.name}--nic"
-  location            = azurerm_resource_group.moai.location
-  resource_group_name = azurerm_resource_group.moai.name
-
-  ip_configuration {
-    name                 = "moai_nic_config"
-    subnet_id            = azurerm_subnet.moaisubnet
-    private_ip_address   = "Dynamic"
-    public_ip_address_id = azurerm_public_ip.moaiip
   }
 }
 

@@ -1,4 +1,4 @@
-module "providers" {
+module "global" {
   source = "../"
   providers = {
     azure = azurerm.eu
@@ -6,12 +6,12 @@ module "providers" {
 }
 
 module "imports" {
-    source = "../virtualmachine"
+  source = "../virtualmachine"
 }
 
 resource "azurerm_virtual_machine_extension" "moaiiis" {
-  name = "${modules.imports.name}--wsi"
-  virtual_machine_id = module.imports.vm
+  name = "${modules.global.name}--wsi"
+  virtual_machine_id = modules.imports.vm
   publisher = var.publisher
   type = "CustomScriptExtension"
   type_handler_version = "1.8"
