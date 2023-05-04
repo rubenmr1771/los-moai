@@ -13,11 +13,11 @@ terraform {
     }
 }
 
-provider "azurerm" {
+provider "azurerm" "azure" {
     alias  = "eu" //El alias define el nombre de la conexión cuando usamos el código azurerm.alias.
     region = var.region //lee la variable region del fichero variables.
-    subscription_id = "" //Id de suscripción
-    client_id = "" //Id del cliente
-    client_secret = "" //Clave de acceso
-    tenant_id = "" //ID de accesps de invitados
+    subscription_id = var.subscripcion //Id de suscripción
+    client_id = var.usuario //Id del cliente
+    client_secret = var.contrasena //Clave de acceso
+    tenant_id = var.invitado //ID de accesps de invitados
 }
