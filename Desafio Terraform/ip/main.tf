@@ -7,7 +7,9 @@ module "providers" {
 
 module "imports" {
     source = "../virtualmachine"
-    source = "../network"
+}
+module "network-import" {
+  source = "../network"
 }
 
 resource "azurerm_public_ip" "moaiip" {
