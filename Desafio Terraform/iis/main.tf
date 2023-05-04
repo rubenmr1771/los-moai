@@ -10,7 +10,7 @@ module "imports" {
 }
 
 resource "azurerm_virtual_machine_extension" "moaiiis" {
-  name = "${random_pet.randomid}--wsi"
+  name = "${modules.imports.name}--wsi"
   virtual_machine_id = module.imports.vm
   publisher = var.publisher
   type = "CustomScriptExtension"
