@@ -41,21 +41,6 @@ boot_diagnostics {
     }
 }
 
-#Instalar IIS en la maquina virtual
-resource "azurerm_virtual_machine_extension" "moaiiis" {
-  name = "${random_pet.randomid}--wsi"
-  virtual_machine_id = azurerm_windows_virtual_machine.moaivm
-  publisher = var.publisher
-  type = "CustomScriptExtension"
-  type_handler_version = "1.8"
-  auto_upgrade_minor_version = true
-
-  settings = <<SETTINGS
-    {
-        "commandToExecute": "powershell -ExecutionPolicy Unrestricted Install-WindowsFeature -Name Moai-Web-Server -IncludeAllSubFeature -IncludeManagementTools"
-    }
-  SETTINGS
-}
 
 #Generación de texto y contraseña para los nombres de cuenta
 resource "random_pet" "randomid" {
