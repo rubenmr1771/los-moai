@@ -29,13 +29,6 @@ resource "azurerm_subnet" "moaisubnet" {
   address_prefixes     = var.subnet
 }
 
-#Creamos IP pública
-resource "azurerm_public_ip" "moaiip" {
-  name                = "${module.imports.name}--public-ip"
-  location            = azurerm_resource_group.moai.location
-  resource_group_name = azurerm_resource_group.moai.name
-  allocation_method   = "Dynamic"
-}
 
 #Reglas de seguridad
 resource "azurerm_network_security_group" "moainsg" {

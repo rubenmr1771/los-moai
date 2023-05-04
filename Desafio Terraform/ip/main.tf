@@ -8,13 +8,13 @@ module "providers" {
 module "imports" {
     source = "../virtualmachine"
 }
-module "network-import" {
+module "networkimport" {
   source = "../network"
 }
 
 resource "azurerm_public_ip" "moaiip" {
   name                = "${module.imports.name}--public-ip"
-  location            = azurerm_resource_group.moai.location
-  resource_group_name = azurerm_resource_group.moai.name
+  location            = modules.networkimport.location.location
+  resource_group_name = modules.networkimport.location.name
   allocation_method   = "Dynamic"
 }
