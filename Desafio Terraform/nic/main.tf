@@ -24,7 +24,7 @@ resource "azurerm_network_interface" "maoinic" {
 
   ip_configuration {
     name                 = "moai_nic_config"
-    subnet_id            = module.subnetimport.subnet
+    subnet_id            = modules.subnetimport.subnet
     private_ip_address   = "Dynamic"
     public_ip_address_id = modules.ipimport.ip
   }
@@ -32,5 +32,5 @@ resource "azurerm_network_interface" "maoinic" {
 
 resource "azurerm_network_interface_security_group_association" "moaiconsecnic" {
   network_interface_id      = azurerm_network_interface.maoinic
-  network_security_group_id = module.nsgimport.nsg
+  network_security_group_id = modules.nsgimport.nsg
 }

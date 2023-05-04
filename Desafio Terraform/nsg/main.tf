@@ -5,8 +5,12 @@ module "global" {
   }
 }
 
+module "nicimport" {
+  source = "../nic"
+}
+
 resource "azurerm_network_security_group" "moainsg" {
-  name                = "${module.imports.name}--nsg"
+  name                = "${modules.imports.name}--nsg"
   location            = modules.global.globallocation
   resource_group_name = modules.global.globalname 
 
@@ -32,4 +36,9 @@ resource "azurerm_network_security_group" "moainsg" {
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
+}
+
+resource "azurerm_network_interface_security_group_association" "moaiconsecnic" {
+  network_interface_id      = modules.nicimport.nic
+  network_security_group_id = azurerm_network_security_group.moainsg
 }

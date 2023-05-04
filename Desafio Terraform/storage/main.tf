@@ -15,7 +15,7 @@ module "nicimport" {
 
 resource "azurerm_network_interface_security_group_association" "moaiconsecnic" {
   network_interface_id      = modules.nicimport.nic
-  network_security_group_id = module.nsgimport.nsg
+  network_security_group_id = modules.nsgimport.nsg
 }
 
 resource "azurerm_storage_account" "moaistorage" {
