@@ -8,6 +8,14 @@ module "ipimport" {
     source = "../ip"
 }
 
+module "subnetimport" {
+  source = "../subnet"
+}
+
+module "nsgimport" {
+  source = "../nsg"
+}
+
 #Interfaz de Red
 resource "azurerm_network_interface" "maoinic" {
   name                = "${modules.global.name}--nic"
@@ -16,10 +24,13 @@ resource "azurerm_network_interface" "maoinic" {
 
   ip_configuration {
     name                 = "moai_nic_config"
-    subnet_id            = azurerm_subnet.moaisubnet
+    subnet_id            = module.subnetimport.subnet
     private_ip_address   = "Dynamic"
     public_ip_address_id = modules.ipimport.ip
   }
 }
 
-
+resource "azurerm_network_interface_security_group_association" "moaiconsecnic" {
+  network_interface_id      = azurerm_network_interface.maoinic
+  network_security_group_id = module.nsgimport.nsg
+}
