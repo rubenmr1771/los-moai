@@ -1,4 +1,4 @@
-//Fichero de variables globale
+//Fichero de variables globales
 variable "subscripcion" {
   default = "Moai" //ID de subscripción de Azure
   description = "ID de la suscripción"
