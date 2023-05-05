@@ -5,7 +5,7 @@ variable "subscripcion" {
 }
 
 variable "usuario" {
-  default = "Moaicapgemini" //Id de Usuario de Azure
+  default = "Moaicapgeminipro" //Id de Usuario de Azure
   description = "ID del usuario"
 }
 
@@ -21,12 +21,12 @@ variable "invitado" {
 
 variable "prefijo" {
   type = string
-  default = "moai-"
+  default = "moaipro-"
   description = "Prefijo de los nombres de recurso"
 }
 
 variable "adminuser" {
-  default = "admin"
+  default = "adminpro"
   description = "Nombre de cuenta admin"
 }
 
@@ -36,7 +36,7 @@ variable "publisher" {
 }
 
 variable "region" {
-  default     = "eu-west" //Servidor de Azure
+  default     = "eu-east" //Servidor de Azure
   description = "Dirección del servidor Azure donde etá ubicada la máquina"
 }
 
@@ -51,11 +51,11 @@ variable "tipomaquina" {
 }
 
 variable "direccionip" {
-  default = ["10.0.0.0/16"] //Variable dirección IP
+  default = ["10.0.3.0/16"] //Variable dirección IP
   description = "Dirección IP de la red"
 }
 
 variable "subnet" {
-  default = ["10.0.1.0/24"] //Variable dirección IP de la subnetwork
+  default = ["10.0.2.0/24"] //Variable dirección IP de la subnetwork
   description = "Dirección IP de la subnetwork"
 }
