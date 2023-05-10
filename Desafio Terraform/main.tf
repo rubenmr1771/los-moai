@@ -1,8 +1,8 @@
-resource "azurerm_resource_group" "moai" {
-    location = var.region //Conectamos al servidor de azure mediante la variable region especificada en el fichero variables
-    name = "Máquina del grupo Los Moai"
+module "providers" {
+  source = "../"
 }
 
+<<<<<<< HEAD
 # Create virtual network
 resource "azurerm_virtual_network" "my_terraform_network" {
   name                = "${random_pet.prefix.id}-vnet"
@@ -153,3 +153,23 @@ resource "random_pet" "prefix" {
   prefix = var.prefix
   length = 1
 }
+=======
+resource "azurerm_resource_group" "moai" {
+  location = var.region //Conectamos al servidor de azure mediante la variable region especificada en el fichero variables
+  name     = "Los_Moai"
+}
+
+resource "random_pet" "randomid" {
+  prefix = var.prefix
+  length = 1
+}
+
+resource "random_password" "randompass" {
+    length = 20
+    min_lower = 1
+    min_upper = 1
+    min_numeric = 3
+    min_special = 3
+    special = true  
+}
+>>>>>>> 1ddca3108e1682e2bcfddd94115d6d628350cbc1
