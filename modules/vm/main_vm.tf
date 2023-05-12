@@ -1,9 +1,18 @@
 #Gerardo
+# Create storage account for boot diagnostics
+resource "azurerm_storage_account" "my_storage_account" {
+  name                     = var.my_storage_account_name
+  location                 = azurerm_resource_group.rg.location
+  resource_group_name      = azurerm_resource_group.rg.name
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+}
+
 # Create virtual machine
 resource "azurerm_windows_virtual_machine" "maquina_virtual" {
-  name                  = var.maquina_virual_name
+  name                  = var.maquina_virual_name 
   admin_username        = var.maquina_virtual_admin
-  admin_password        = random_password.password.result
+  admin_password        = var.maquina_virtual_admin_password
   location              = azurerm_resource_group.rg.location
   resource_group_name   = azurerm_resource_group.rg.name
   network_interface_ids = [azurerm_network_interface.my_terraform_nic.id]
@@ -11,15 +20,15 @@ resource "azurerm_windows_virtual_machine" "maquina_virtual" {
 
   os_disk {
     name                 = var.maquina_virtual_os_disk_name
-    caching              = var.maquina_virtual_os_disk_caching
-    storage_account_type = var.maquina_virtual_os_disk_storage_account_type
+    caching              = "ReadWrite"
+    storage_account_type = "Premium_LRS"
   }
 
   source_image_reference {
-    publisher = var.maquina_virtual_source_image_reference_publisher
-    offer     = var.maquina_virtual_source_image_reference_offer
-    sku       = var.maquina_virtual_source_image_reference_sku "2022-datacenter-azure-edition"
-    version   = var.maquina_virtual_source_image_reference_version "latest"
+    publisher = "MicrosoftWindowsServer"
+    offer     = "WindowsServer"
+    sku       = "2022-datacenter-azure-edition"
+    version   = "latest" 
   }
 
 
@@ -30,12 +39,12 @@ resource "azurerm_windows_virtual_machine" "maquina_virtual" {
 
 # Install IIS web server to the virtual machine
 resource "azurerm_virtual_machine_extension" "web_server_install" {
-  name                       = var.web_server_install_name "${random_pet.prefix.id}-wsi"
+  name                       = var.web_server_install_name
   virtual_machine_id         = azurerm_windows_virtual_machine.main.id
-  publisher                  = var.web_server_install_publisher "Microsoft.Compute"
-  type                       = var.web_server_install_type "CustomScriptExtension"
-  type_handler_version       = var.web_server_install_type_handler_verson "1.8"
-  auto_upgrade_minor_version = var.web_server_install_auto_upgrade_minor_version true
+  publisher                  = "Microsoft.Compute"
+  type                       = "CustomScriptExtension"
+  type_handler_version       = "1.8"
+  auto_upgrade_minor_version = true
 
   settings = <<SETTINGS
     {
