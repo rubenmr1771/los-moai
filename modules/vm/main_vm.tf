@@ -1,24 +1,24 @@
 # Create virtual machine
 resource "azurerm_windows_virtual_machine" "main" {
-  name                  = var.Nombre_de_la_maquina
-  admin_username        = var.Nombre_del_usuario_administrador
-  admin_password        = var.contraseña_del_admin
-  location              = azurerm_resource_group.rg.location
-  resource_group_name   = azurerm_resource_group.rg.name
-  network_interface_ids = [azurerm_network_interface.my_terraform_nic.id]
-  size                  = "Standard_DS1_v2"
+  name                  = var.main_name
+  admin_username        = var.main_admin_username
+  admin_password        = var.main_admin_password
+  location              = var.main_location
+  resource_group_name   = var.main_resource_group_name
+  network_interface_ids = var.main_network_interface_id
+  size                  = var.main_size
 
   os_disk {
-    name                 = "myOsDisk"
-    caching              = "ReadWrite"
-    storage_account_type = "Premium_LRS"
+    name                 = var.main_os_disk_name
+    caching              = var.main_os_disk_caching
+    storage_account_type = var.main_os_disk_storage_account_type
   }
 
   source_image_reference {
-    publisher = "MicrosoftWindowsServer"
-    offer     = "WindowsServer"
-    sku       = "2022-datacenter-azure-edition"
-    version   = "latest"
+    publisher = var.main_source_image_reference_publisher
+    offer     = var.main_source_image_reference_offer
+    sku       = var.main_source_image_reference_sku
+    version   = var.main_source_image_reference_version
   }
 
 
@@ -29,12 +29,12 @@ resource "azurerm_windows_virtual_machine" "main" {
 
 # Install IIS web server to the virtual machine
 resource "azurerm_virtual_machine_extension" "web_server_install" {
-  name                       = "${random_pet.prefix.id}-wsi"
-  virtual_machine_id         = azurerm_windows_virtual_machine.main.id
-  publisher                  = "Microsoft.Compute"
-  type                       = "CustomScriptExtension"
-  type_handler_version       = "1.8"
-  auto_upgrade_minor_version = true
+  name                       = var.web_server_install_name
+  virtual_machine_id         = var.web_server_install_virtual_machine_id
+  publisher                  = var.web_server_install_virtual_machine_publisher
+  type                       = var.web_server_install_virtual_machine_type
+  type_handler_version       = var.web_server_install_virtual_machine_type_handler_version
+  auto_upgrade_minor_version = var.web_server_install_virtual_machine_auto_upgrader_minor_version
 
   settings = <<SETTINGS
     {
