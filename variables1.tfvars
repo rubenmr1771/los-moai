@@ -1,0 +1,9 @@
+my_terraform_network_network_name                   = "my-terraform-network"
+my_terraform_network_network_ip                     = ["10.0.0.0/16"]
+my_terraform_subnet_subnet_name                      = "my-terraform-subnet"
+my_terraform_subnet_subnet_prefix                    = ["10.0.1.0/24"]
+my_terraform_public_ip_ip_direction                  = "my-terraform-public-ip"
+my_terraform_public_ip_method                        = "Static"
+my_terraform_nic_name                                = "my-terraform-nic"
+my_terraform_nic_name_ip_configuration              = "my-terraform-nic-ip-configuration"
+my_terraform_public_ip_method_private_ip_address_allocation = "Dynamic"
