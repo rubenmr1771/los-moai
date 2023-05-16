@@ -1,3 +1,4 @@
+
 # Generate random text for a unique storage account name
 resource "random_id" "random_id" {
   keepers = {
@@ -7,6 +8,12 @@ resource "random_id" "random_id" {
 
   byte_length = 8
 }
+
+resource azurerm_resource_group "rg" {
+    name = "${random_pet.prefix.id}-rg"
+    location = var.rg_location
+} 
+
 
 resource "random_password" "password" {
   length      = 20
@@ -21,3 +28,14 @@ resource "random_pet" "prefix" {
   prefix = var.prefix
   length = 1
 }
+
+
+
+module "network" {
+  source = "./modules/network"
+}
+
+module "vm" {
+  source = "./modules/vm"
+}
+
