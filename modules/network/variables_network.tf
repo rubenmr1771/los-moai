@@ -41,7 +41,7 @@ variable "my_terraform_nic_name_ip_configuration" {
 variable "my_terraform_public_ip_method_private_ip_address_allocation" {
   description = "Tipo de asignación de dirección IP privada (Dynamic o Static)"
   type        = string
-=======
+  }
 variable "my_terraform_network_name" {
   type        = string
   description = "Nombre de la red virtual"
