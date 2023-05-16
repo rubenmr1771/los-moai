@@ -77,16 +77,6 @@ variable "my_terraform_nsg_name" {
   description = "Nombre para el grupo de seguridad de red"
 }
 
-variable "my_terraform_nic_name" {
-  type        = string
-  description = "Nombre para el NIC de la interfaz de red"
-}
-
-variable "my_terraform_nic_ip_configuration_name" {
-  type        = string
-  description = "Nombre para la conf de IP"
-}
-
 variable "my_terraform_nic_ip_configuration_private_ip_address_allocation" {
   type        = string
   description = "Puede ser Dynamic o Static"
