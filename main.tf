@@ -33,9 +33,23 @@ resource "random_pet" "prefix" {
 
 module "network" {
   source = "./modules/network"
+  my_terraform_network_network_name = var.main_my_terraform_network_network_name
+  my_terraform_network_network_ip = var.main_my_terraform_network_network_ip
+  my_terraform_subnet_subnet_name = var.main_my_terraform_subnet_subnet_name
+  my_terraform_subnet_subnet_prefix = var.main_my_terraform_subnet_subnet_prefix
+  my_terraform_public_ip_ip_direction = var.main_my_terraform_public_ip_ip_direction
+  my_terraform_public_ip_method = var.main_my_terraform_public_ip_method
+  my_terraform_nic_name = var.main_my_terraform_nic_name
+  my_terraform_nic_name_ip_configuration = var.main_my_terraform_nic_name_ip_configuration
+  my_terraform_public_ip_method_private_ip_address_allocation = var.main_my_terraform_public_ip_method_private_ip_address_allocation  
 }
 
 module "vm" {
   source = "./modules/vm"
+  my_storage_account_name = var.main_my_storage_account_name
+  maquina_virtual_name = var.main_maquina_virtual_name
+  maquina_virtual_admin_username = var.main_maquina_virtual_admin_username
+  maquina_virtual_admin_password = var.main_maquina_virtual_admin_password
+  maquina_virtual_size = var.main_maquina_virtual_size
+  maquina_virtual_os_disk_name = var.main_maquina_virtual_os_disk_name
 }
-
