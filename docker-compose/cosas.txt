@@ -1,0 +1,2 @@
+el nombre del archivo de config prometheus debe ajustarse al configurado en
+el despliegue del mismo
