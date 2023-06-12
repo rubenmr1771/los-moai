@@ -1,6 +1,6 @@
-######################
-## Red - Output     ##
-######################
+###################
+## Red - Outputs ##
+###################
 
 output "network_resource_group_id" {
   value = data.azurerm_resource_group.rg_FCT_Capgemini_2023_Losmoai.id

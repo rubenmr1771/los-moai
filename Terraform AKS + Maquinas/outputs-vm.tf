@@ -1,6 +1,6 @@
-##########################
-## Azure Linux - Output ##
-##########################
+##################
+## VM - Outputs ##
+##################
 
 output "linux_vm_name" {
   description = "Virtual Machine name"

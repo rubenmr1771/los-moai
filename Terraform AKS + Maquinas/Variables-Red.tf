@@ -4,10 +4,10 @@
 
 variable "network-vnet-cidr" {
   type        = string
-  description = "The CIDR of the network VNET"
+  description = "CIDR de la VNET"
 }
 
 variable "network-subnet-cidr" {
   type        = string
-  description = "The CIDR for the network subnet"
+  description = "CIDR de la Subnet"
 }

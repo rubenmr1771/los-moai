@@ -5,17 +5,17 @@
 
 variable "linux_vm_size" {
   type        = string
-  description = "Size (SKU) of the virtual machine to create"
+  description = "Tamaño de la Máquina virtual a crear"
 }
 
 variable "linux_admin_username" {
   type        = string
-  description = "Username for Virtual Machine administrator account"
+  description = "Nombre de usuario de la máquina virtual"
   default     = ""
 }
 
 variable "linux_admin_password" {
   type        = string
-  description = "Password for Virtual Machine administrator account"
+  description = "Contraseña del admin de la máquina virtual"
   default     = ""
 }

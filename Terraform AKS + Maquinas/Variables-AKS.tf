@@ -4,17 +4,17 @@
 
 variable "cluster_name" {
   type = string
-  description = "AKS name in Microsoft Azure"
+  description = "Nombre AKS en Microsoft Azure"
 }
 variable "kubernetes_version" {
   type = string
-  description = "Kubernetes version"
+  description = "Version de Kubernetes"
 }
 variable "system_node_count" {
   type = number
-  description = "Number of AKS worker nodes"
+  description = "Número de nodos de AKS"
 }
 variable "node_resource_group" {
   type = string
-  description = "Resource Group name for cluster resources in Microsoft Azure"
+  description = "Nombre del RG para el cluster de recursos"
 }

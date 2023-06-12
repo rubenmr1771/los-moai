@@ -1,3 +1,7 @@
+################
+## AKS - Main ##
+################
+
 resource "azurerm_kubernetes_cluster" "aks" {
   name                = var.cluster_name
   kubernetes_version  = var.kubernetes_version

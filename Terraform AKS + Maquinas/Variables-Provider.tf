@@ -4,7 +4,7 @@
 
 variable "azure-subscription-id" {
   type        = string
-  description = "Azure Subscription ID"
+  description = "ID Azure"
 }
 
 //variable "azure-client-id" {
@@ -19,5 +19,5 @@ variable "azure-subscription-id" {
 
 variable "azure-tenant-id" {
   type        = string
-  description = "Azure Tenant ID"
+  description = "ID Invitado"
 }
