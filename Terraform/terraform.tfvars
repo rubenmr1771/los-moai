@@ -27,11 +27,3 @@ network-subnet-cidr = "10.7.1.0/24"
 ##################
 linux_vm_size        = "Standard_D2s_V3"
 linux_admin_username = "moaisupremo"
-
-#################
-# Variables AKS #
-#################
-cluster_name        = "aks-terraform-cluster"
-kubernetes_version  = "1.26.3"
-system_node_count   = 2
-node_resource_group = "aks_terraform_-node_resources_rg"
