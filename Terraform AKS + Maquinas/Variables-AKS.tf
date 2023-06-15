@@ -1,7 +1,7 @@
 ###################
 ## Variables AKS ##
 ###################
-
+//Pendiente de eliminar
 variable "cluster_name" {
   type = string
   description = "Nombre AKS en Microsoft Azure"

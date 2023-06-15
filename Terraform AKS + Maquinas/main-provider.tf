@@ -2,6 +2,7 @@
 ## Proveedor Azure - Main ##
 ############################
 
+//Configuración de Terraform y el proveedor que vamos a utilizar
 terraform {
   required_providers {
     azurerm = {
@@ -11,6 +12,7 @@ terraform {
   }
 }
 
+//Configuración de las claves de acceso del proveedor. En este caso Azure, las claves se pueden modificar en el fichero tfvars
 provider "azurerm" { 
   features {}  
   environment     = "public"

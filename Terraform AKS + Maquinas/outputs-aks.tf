@@ -1,6 +1,7 @@
 ###################
 ## AKS - Outputs ##
 ###################
+//Pendiente de eliminar
 
 output "aks_id" {
   value = azurerm_kubernetes_cluster.aks.id

@@ -1,6 +1,8 @@
-################
-## AKS - Main ##
-################
+#############################
+## AKS - Main (Deprecated) ##
+#############################
+
+//Pendiente de eliminar
 
 resource "azurerm_kubernetes_cluster" "aks" {
   name                = var.cluster_name
